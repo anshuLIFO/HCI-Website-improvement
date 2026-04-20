@@ -602,7 +602,7 @@ function renderCheckoutPage() {
       }
     }
 
-    window.alert("Order placed successfully in this student project flow.");
+    window.alert("Order placed successfully");
     localStorage.removeItem(CART_STORAGE_KEY);
     updateNavSummary();
     window.location.href = "shop.html";
