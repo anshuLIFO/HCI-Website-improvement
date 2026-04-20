@@ -179,8 +179,39 @@ function updateNavSummary() {
   }
 }
 
-// improvement - this simple add to cart helper lets every shop and product page button work.
-function addToCart(productId, quantity) {
+// improvement - this helper shows a small success message under the product photo instead of using a popup.
+function showAddedMessage(triggerElement) {
+  let messageElement = null;
+
+  if (triggerElement) {
+    const productCard = triggerElement.closest(".product-card");
+
+    if (productCard) {
+      messageElement = productCard.querySelector(".js-add-message");
+    }
+  }
+
+  if (!messageElement) {
+    messageElement = document.querySelector(".js-product-added-message");
+  }
+
+  if (!messageElement) {
+    return;
+  }
+
+  messageElement.classList.add("visible");
+
+  if (messageElement.hideTimer) {
+    clearTimeout(messageElement.hideTimer);
+  }
+
+  messageElement.hideTimer = window.setTimeout(() => {
+    messageElement.classList.remove("visible");
+  }, 2200);
+}
+
+// improvement - this simple add to cart helper lets every shop and product page button work without a browser alert.
+function addToCart(productId, quantity, triggerElement) {
   const safeQuantity = Math.max(1, Number(quantity) || 1);
   const cart = loadCart();
   const existingItem = cart.find((item) => item.id === productId);
@@ -196,7 +227,7 @@ function addToCart(productId, quantity) {
 
   saveCart(cart);
   updateNavSummary();
-  window.alert("Item added to cart.");
+  showAddedMessage(triggerElement);
 }
 
 function removeFromCart(productId) {
@@ -264,6 +295,7 @@ function createProductCard(product) {
       ${productLinkStart}
         <img class="product-card-image" src="${product.image}" alt="${product.name}">
       ${productLinkEnd}
+      <p class="add-to-cart-message js-add-message">Product added to cart</p>
       <div class="product-card-body">
         <h3>${product.productPage ? `<a href="${product.productPage}">${product.name}</a>` : product.name}</h3>
         <p class="product-price">${formatMoney(product.price)}</p>
@@ -327,6 +359,7 @@ function renderProductPage() {
   detailContainer.innerHTML = `
     <div class="detail-image-wrap">
       <img class="detail-image" src="${product.image}" alt="${product.name}">
+      <p class="add-to-cart-message js-product-added-message">Product added to cart</p>
     </div>
     <div class="detail-info">
       <h2>${product.name}</h2>
@@ -353,7 +386,7 @@ function renderProductPage() {
   const quantityInput = document.getElementById("product-quantity");
 
   addButton.addEventListener("click", () => {
-    addToCart(product.id, quantityInput.value);
+    addToCart(product.id, quantityInput.value, addButton);
   });
 }
 
@@ -582,7 +615,7 @@ function attachAddToCartHandlers() {
 
   addButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      addToCart(button.dataset.productId, 1);
+      addToCart(button.dataset.productId, 1, button);
     });
   });
 }

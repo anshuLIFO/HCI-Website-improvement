@@ -293,6 +293,21 @@ input {
   background: #f5f8fc;
 }
 
+/* improvement - this small inline message replaces the browser popup after a product is added to the cart. */
+.add-to-cart-message {
+  display: none;
+  margin: 0;
+  padding: 10px 16px;
+  background: #edf9ef;
+  color: #1d6b34;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.add-to-cart-message.visible {
+  display: block;
+}
+
 .product-card-image {
   width: 100%;
   aspect-ratio: 1 / 1;
