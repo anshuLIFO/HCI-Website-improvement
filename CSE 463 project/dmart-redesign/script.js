@@ -364,7 +364,6 @@ function renderProductPage() {
     <div class="detail-info">
       <h2>${product.name}</h2>
       <p class="product-price">${formatMoney(product.price)}</p>
-      <p class="shop-copy">This page keeps the main product actions from the live Dmart product detail page and removes the extra description and reviews content.</p>
 
       <div class="quantity-line">
         <label for="product-quantity">Quantity</label>
