@@ -570,7 +570,6 @@ function renderCheckoutPage() {
   paymentOptions.forEach((option) => {
     option.addEventListener("change", () => {
       const usingCard = document.querySelector('input[name="payment-method"]:checked').value === "card";
-      applePayNote.classList.toggle("hidden", usingCard);
       cardFields.classList.toggle("hidden", !usingCard);
     });
   });
