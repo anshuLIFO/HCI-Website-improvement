@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Dmart Grocery Redesign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="checkout">
+  <!-- same from original website - the logo image, phone number, email, Shop label, Checkout label, and overall grocery layout were recreated from https://dmartcs.com/checkout/ -->
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="page-shell top-bar-inner">
+        <p>+1 (630) 202 0152</p>
+        <p>info@dmart.com</p>
+      </div>
+    </div>
+    <div class="page-shell nav-bar">
+      <a class="brand" href="shop.html">
+        <img src="assets/logo.png" alt="Dmart Grocery logo">
+      </a>
+      <nav class="main-nav">
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link active" href="checkout.html">Checkout</a>
+        <a class="cart-pill" href="cart.html">
+          <span id="nav-cart-total">$0.00</span>
+          <span id="nav-cart-count">0 Cart</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell page-space">
+    <section class="cart-page-header">
+      <div>
+        <p class="eyebrow">Simple checkout flow for the project</p>
+        <h1>Checkout</h1>
+      </div>
+      <div class="shop-actions">
+        <a class="button secondary-button" href="shop.html">Shop</a>
+        <a class="button primary-button" href="cart.html">Back to Cart</a>
+      </div>
+    </section>
+
+    <section id="checkout-empty-state" class="empty-state hidden">
+      <h2>Your cart is currently empty.</h2>
+      <p>Add a product first so the checkout page can show the order summary and address details.</p>
+      <a class="button primary-button" href="shop.html">Return to shop</a>
+    </section>
+
+    <section id="checkout-content" class="checkout-layout hidden">
+      <!-- improvement - this red bordered box combines the billing details and payment options into one clear section. -->
+      <section class="summary-card highlight-red">
+        <h2>Payment and Billing</h2>
+
+        <form id="checkout-form" class="checkout-form">
+          <label>
+            Full Name
+            <input id="customer-name" type="text" placeholder="Your full name">
+          </label>
+          <div class="inline-fields">
+            <label>
+              Email
+              <input id="customer-email" type="email" placeholder="you@example.com">
+            </label>
+            <label>
+              Phone
+              <input id="customer-phone" type="tel" placeholder="(630) 202-0152">
+            </label>
+          </div>
+
+          <!-- improvement - these payment choices keep Apple Pay and card payment in one section. -->
+          <div class="payment-choice-box">
+            <label class="radio-option">
+              <input type="radio" name="payment-method" value="apple-pay" checked>
+              <span>Apple Pay</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="payment-method" value="card">
+              <span>Credit / Debit Card</span>
+            </label>
+          </div>
+
+          <p id="apple-pay-note" class="helper-copy">Apple Pay selected. In this student project, tapping Place Order simulates the wallet checkout step.</p>
+
+          <!-- improvement - card fields only appear when the user chooses the card option. -->
+          <div id="card-fields" class="hidden">
+            <div class="inline-fields">
+              <label>
+                Card Number
+                <input id="card-number" type="text" placeholder="1234 5678 9012 3456">
+              </label>
+              <label>
+                Name on Card
+                <input id="card-name" type="text" placeholder="Cardholder name">
+              </label>
+            </div>
+            <div class="inline-fields">
+              <label>
+                Expiry Date
+                <input id="card-expiry" type="text" placeholder="MM/YY">
+              </label>
+              <label>
+                CVV
+                <input id="card-cvv" type="text" placeholder="123">
+              </label>
+            </div>
+
+            <!-- improvement - this checkbox can copy the delivery address from the cart page into billing automatically. -->
+            <label class="checkbox-row">
+              <input id="same-as-delivery" type="checkbox">
+              <span>Same as delivery address?</span>
+            </label>
+
+            <div class="billing-box">
+              <label>
+                Billing Street Address
+                <input id="billing-street" type="text" placeholder="123 Main Street">
+              </label>
+              <label>
+                Billing City
+                <input id="billing-city" type="text" placeholder="Carol Stream">
+              </label>
+              <div class="inline-fields">
+                <label>
+                  Billing ZIP
+                  <input id="billing-zip" type="text" placeholder="60188">
+                </label>
+                <label>
+                  Billing State
+                  <input id="billing-state" type="text" placeholder="IL">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <button class="button primary-button wide-button" type="submit">Place Order</button>
+        </form>
+      </section>
+
+      <aside class="checkout-side-panel">
+        <!-- same from original website - this keeps a familiar order summary area beside the main checkout form. -->
+        <section class="summary-card">
+          <h2>Delivery Address</h2>
+          <div id="delivery-summary" class="address-summary"></div>
+        </section>
+
+        <section class="summary-card">
+          <h2>Your Order</h2>
+          <div id="checkout-items"></div>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="checkout-subtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>$0.00</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total</span>
+            <span id="checkout-total">$0.00</span>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

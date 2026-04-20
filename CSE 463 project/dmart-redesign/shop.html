@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - Dmart Grocery Redesign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="shop">
+  <!-- same from original website - the logo image, phone number, email, Shop label, Checkout label, and overall grocery layout were recreated from https://dmartcs.com/shop/ -->
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="page-shell top-bar-inner">
+        <p>+1 (630) 202 0152</p>
+        <p>info@dmart.com</p>
+      </div>
+    </div>
+    <div class="page-shell nav-bar">
+      <a class="brand" href="shop.html">
+        <img src="assets/logo.png" alt="Dmart Grocery logo">
+      </a>
+      <nav class="main-nav">
+        <a class="nav-link active" href="shop.html">Shop</a>
+        <a class="nav-link" href="checkout.html">Checkout</a>
+        <a class="cart-pill" href="cart.html">
+          <span id="nav-cart-total">$0.00</span>
+          <span id="nav-cart-count">0 Cart</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell page-space">
+    <!-- same from original website - this breadcrumb wording follows the live shop page. -->
+    <nav class="breadcrumb">Home / Products</nav>
+
+    <section class="shop-header">
+      <div>
+        <p class="eyebrow">Fresh produce and local favorites stocked daily</p>
+        <h1>Shop Our Produce</h1>
+        <p class="shop-copy">This redesign only keeps the main shopping flow and the selected products from the original Dmart store.</p>
+      </div>
+      <div class="shop-actions">
+        <a class="button secondary-button" href="cart.html">View Cart</a>
+        <a class="button primary-button" href="checkout.html">Checkout</a>
+      </div>
+    </section>
+
+    <!-- improvement - this red bordered search section makes the shop search work for the selected products only. -->
+    <section class="highlight-red search-panel">
+      <div class="search-panel-copy">
+        <h2>Search Products</h2>
+        <p>Search for one of the selected items and click search to show only that product card.</p>
+      </div>
+      <form class="search-form" id="shop-search-form">
+        <input id="shop-search-input" type="search" placeholder="Search bananas, carrots, cucumbers..." aria-label="Search products">
+        <button class="button primary-button" type="submit">Search</button>
+      </form>
+    </section>
+
+    <!-- same from original website - the product names, prices, and images below are taken from the live shop page. -->
+    <section class="results-header">
+      <p id="shop-results-text">Showing 1-9 of 9 results</p>
+    </section>
+
+    <section class="product-grid" id="shop-product-grid"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

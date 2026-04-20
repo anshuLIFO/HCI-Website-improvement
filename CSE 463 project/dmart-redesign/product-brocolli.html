@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brocolli - Dmart Grocery Redesign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="product" data-product-slug="brocolli">
+  <!-- same from original website - the logo image, phone number, email, Shop label, Checkout label, and overall grocery layout were recreated from https://dmartcs.com/product/brocolli/ -->
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="page-shell top-bar-inner">
+        <p>+1 (630) 202 0152</p>
+        <p>info@dmart.com</p>
+      </div>
+    </div>
+    <div class="page-shell nav-bar">
+      <a class="brand" href="shop.html">
+        <img src="assets/logo.png" alt="Dmart Grocery logo">
+      </a>
+      <nav class="main-nav">
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link" href="checkout.html">Checkout</a>
+        <a class="cart-pill" href="cart.html">
+          <span id="nav-cart-total">$0.00</span>
+          <span id="nav-cart-count">0 Cart</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell page-space">
+    <!-- same from original website - this breadcrumb and page heading follow the original product page wording. -->
+    <nav class="breadcrumb">Home / Shop</nav>
+    <section class="detail-title">
+      <h1>Products Details</h1>
+    </section>
+
+    <!-- same from original website - this page uses the original product title, price, category, and product image. -->
+    <section class="product-detail-card" id="product-detail"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Dmart Grocery Redesign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="cart">
+  <!-- same from original website - the logo image, phone number, email, Shop label, Checkout label, and overall grocery layout were recreated from https://dmartcs.com/cart/ -->
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="page-shell top-bar-inner">
+        <p>+1 (630) 202 0152</p>
+        <p>info@dmart.com</p>
+      </div>
+    </div>
+    <div class="page-shell nav-bar">
+      <a class="brand" href="shop.html">
+        <img src="assets/logo.png" alt="Dmart Grocery logo">
+      </a>
+      <nav class="main-nav">
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link active" href="checkout.html">Checkout</a>
+        <a class="cart-pill" href="cart.html">
+          <span id="nav-cart-total">$0.00</span>
+          <span id="nav-cart-count">0 Cart</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell page-space">
+    <section class="cart-page-header">
+      <div>
+        <p class="eyebrow">Simple cart flow for the project</p>
+        <h1>Your Cart</h1>
+      </div>
+      <div class="shop-actions">
+        <a class="button secondary-button" href="shop.html">Shop</a>
+        <a class="button primary-button" href="checkout.html">Checkout</a>
+      </div>
+    </section>
+
+    <section id="cart-empty-state" class="empty-state hidden">
+      <h2>Your cart is currently empty.</h2>
+      <p>Add one of the selected store items from the shop page to continue the flow.</p>
+      <a class="button primary-button" href="shop.html">Return to shop</a>
+    </section>
+
+    <section id="cart-content" class="cart-layout hidden">
+      <div class="cart-items-panel">
+        <div id="cart-items"></div>
+
+        <!-- improvement - this red bordered button replaces Update Cart and sends the user back to the shop page. -->
+        <div class="highlight-red add-more-box">
+          <a class="button secondary-button wide-button" href="shop.html">Add More Items</a>
+        </div>
+      </div>
+
+      <aside class="cart-side-panel">
+        <!-- improvement - this red bordered shipping form replaces the default California selector with direct address fields. -->
+        <section class="summary-card highlight-red">
+          <h2>Shipping Complete</h2>
+          <form id="delivery-form" class="address-form">
+            <label>
+              Street Address
+              <input id="delivery-street" type="text" placeholder="123 Main Street">
+            </label>
+            <label>
+              City
+              <input id="delivery-city" type="text" placeholder="Carol Stream">
+            </label>
+            <div class="inline-fields">
+              <label>
+                ZIP
+                <input id="delivery-zip" type="text" placeholder="60188">
+              </label>
+              <label>
+                State
+                <input id="delivery-state" type="text" placeholder="IL">
+              </label>
+            </div>
+          </form>
+        </section>
+
+        <!-- same from original website - the cart keeps a simple subtotal and total summary area like the live site. -->
+        <section class="summary-card">
+          <h2>Cart Totals</h2>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>$0.00</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total</span>
+            <span id="cart-total">$0.00</span>
+          </div>
+          <a class="button primary-button wide-button" href="checkout.html">Proceed to checkout</a>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
